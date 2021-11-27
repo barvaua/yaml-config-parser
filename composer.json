@@ -1,0 +1,22 @@
+{
+    "name": "barvaua/yaml-config-parser",
+    "description": "yaml file config parser",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.4",
+        "symfony/yaml": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "YamlConfig\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Valery Barabash",
+            "email": "v.barabash.ua@gmail.com"
+        }
+    ]
+}
