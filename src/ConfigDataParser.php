@@ -49,19 +49,19 @@ class ConfigDataParser
 
     /**
      * @param string $fileName
-     * @param array $params
+     * @param array|string $params
      * @param bool $onlyFirstMatch
      * @param bool $withKeys
      * @return array|array[]|mixed
      */
-    public function findByParams(string $fileName, array $params, bool $onlyFirstMatch = true, bool $withKeys = false)
+    public function findByParams(string $fileName, $params, bool $onlyFirstMatch = true, bool $withKeys = false)
     {
         return $this->searchMatches($this->parseConfigYamlFile($fileName), $params, $onlyFirstMatch, $withKeys);
     }
 
     /**
      * @param array $cfgData
-     * @param $params
+     * @param array|string $params
      * @param bool $onlyFirstMatch
      * @param bool $withKeys
      * @return array|array[]|mixed
@@ -72,7 +72,7 @@ class ConfigDataParser
             return null;
         }
 
-        if (is_string($params)) {
+        if (!is_array($params)) {
             return $cfgData[$params] ?? null;
         }
 
@@ -131,12 +131,12 @@ class ConfigDataParser
     }
 
     /**
-     * @param $params
+     * @param array $params
      * @param string $key
      * @param $value
      * @return bool
      */
-    private function areCoincidences($params, string $key, $value): bool
+    private function areCoincidences(array $params, string $key, $value): bool
     {
         if (!isset($params[$key])) {
             return false;
